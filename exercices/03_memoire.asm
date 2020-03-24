@@ -13,6 +13,9 @@
 # - Quand on accede à la mémoire par mots de 32 bits est accessible de combien en combien?
 # - Quelle est la valeur dans la mémoire de la valeur à l'addresse `num0`
 
+.data
+
+
 # On déclare deux nombres de 32 bits dans la mémoire
 # .word permet de specifier qu'on veux un mot de 32bits.
 num0: .word 124
@@ -23,22 +26,27 @@ num1: .word 256
 resultat: .word 0
 
 # ??? <- @num0
-l?  ???, num0
+la  t0, num0
 # load word depuis l'addresse 0 + register dans le register t1
 lw  t1, 0(t0)
 
 # t2 <- @num1
-l?  t2,  ???
+la  t2,  num1
 # Quelle instruction permet de charger un mot mémoire?
-??? t3, 0(t2)
+lw t3, 0(t2)
 
 # chargement de l'addresse du resultat.
-la t4, ???
+la t4, resultat
 # fait l'addition entre nos deux registres dans un registre.
-add ???, ???, ???
+add t4, t3, t1
 # store word, stock le contenu du registre dans l'addresse à 0 + t4
-sw ???, 0(t4)
+sw t4, -100(t5)
 
 # A faire par vous totalement:
 # Afficher nos deux nombres dans la console
 # indice: syscall printInt
+
+la a0, num0
+la a1, num1
+li a7, 1
+ecall
