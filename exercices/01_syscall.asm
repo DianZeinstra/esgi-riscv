@@ -5,7 +5,7 @@
 .data
 
 # la directive .asciz permet de déclarer une chaine fini par un 0x00, '\0' en ascii.
-msg: .asciz "Hello ASM from .data"
+message: .asciz "Hello ASM from .data"
 myInt: .word 42
 
 
@@ -20,9 +20,9 @@ myInt: .word 42
 # - Quelle sont les valeurs en hexadecimales présente dans .data?  R: L'équivalent en hexadéciaml de notre texte "Hello ASM from .data"
 # 0x6c6c6548    0x5341206f   0x7266204d   0x2e206d6f   0x61746164  0x00000000   0x0000002a   0x00000000
 
-la a0, msg # argument de l'appel systeme
-li a7, 4 # appel systeme 4 selon la doc de Rars printString
-ecall # Peret de basculer en mode kernel pour faire l'appel systeme.
+la a0, message # argument de l'appel systeme
+li a7, 4 # appel systeme numéro 4 selon la doc de Rars printString
+ecall # Permet de basculer en mode kernel pour faire l'appel systeme
 
 # Bonus: Afficher maintenant un nombre, vous aurrez besoin de la documentation.
 la t0, myInt

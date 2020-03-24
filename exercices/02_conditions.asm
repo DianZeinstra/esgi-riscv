@@ -49,5 +49,5 @@ end:
 # inspirez vous de l'exercice 01_syscall, le registre a0 doit contenir
 # le numéro du syscall printString: 4 et a7 la chaine à afficher.
 
-li a7, 4
-ecall
+li a7, 4  # numéro syscall
+ecall   # Quelle instruction doit-on utiliser pour faire un syscall?
