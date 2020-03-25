@@ -13,12 +13,12 @@ myInt: .word 42
 
 # Exercice: Observation dans Rars
 
-# - Quelle est l'addresse de base de la chaine msg ?  R: 0x10010000; Son addresse de fin?  R: 0x10010019
+# - Quelle est l'addresse de base de la chaine msg ?  R: 0x10010000; Son addresse de fin?  R: 0x10010014
 
 # - Dans quelle segment de la mémoire est elle?  R: Data segment
 
 # - Quelle sont les valeurs en hexadecimales présente dans .data?  R: L'équivalent en hexadéciaml de notre texte "Hello ASM from .data"
-# 0x6c6c6548    0x5341206f   0x7266204d   0x2e206d6f   0x61746164  0x00000000   0x0000002a   0x00000000
+# 0x6c6c6548    0x5341206f   0x7266204d   0x2e206d6f   0x61746164
 
 la a0, message # argument de l'appel systeme
 li a7, 4 # appel systeme numéro 4 selon la doc de Rars printString

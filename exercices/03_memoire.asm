@@ -18,35 +18,36 @@
 
 # On déclare deux nombres de 32 bits dans la mémoire
 # .word permet de specifier qu'on veux un mot de 32bits.
-num0: .word 124
-num1: .word 256
+num0_g: .word 124
+num1_g: .word 256
 
 # On souhaite charger le resultat de l'addition dans la memoire a
 # l'adresse resultat:
-resultat: .word 0
+resultat_g: .word 0
+
+.text
+
+main:
 
 # ??? <- @num0
-la  t0, num0
+la  t0, num0_g # int32_t * ptr = &num0_g;
 # load word depuis l'addresse 0 + register dans le register t1
-lw  t1, 0(t0)
+lw  t1, 0(t0)  #int32_t p = *^ptr;
 
 # t2 <- @num1
-la  t2,  num1
+la  t2,  num1_g
 # Quelle instruction permet de charger un mot mémoire?
 lw t3, 0(t2)
 
 # chargement de l'addresse du resultat.
-la t4, resultat
+la t4, resultat_g
 # fait l'addition entre nos deux registres dans un registre.
-add t4, t3, t1
+add t5, t3, t1
 # store word, stock le contenu du registre dans l'addresse à 0 + t4
-sw t4, -100(t5)
+sw t5, 0(t4)
 
 # A faire par vous totalement:
 # Afficher nos deux nombres dans la console
 # indice: syscall printInt
 
-la a0, num0
-la a1, num1
-li a7, 1
-ecall
+
